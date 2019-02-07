@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name>Social AutoPilot</name>
+	<version>1.5.2</version>
+	<code>ocxsap152</code>
+	<author>OC-Extensions.com</author>
+	<link>https://www.oc-extensions.com/Social-AutoPilot-OpenCart-2.x</link>
+
+	<file path="admin/language/*/*.php">
+		<operation error="log">
+			<search><![CDATA[// Button]]></search>
+			<add position="after"><![CDATA[
+				$_['button_share'] = 'Share';
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="admin/view/template/common/header.tpl">
+		<operation error="log">
+			<search><![CDATA[<ul class="nav pull-right">]]></search>
+			<add position="after"><![CDATA[
+				<li><a href="javascript:void(0);" class="btn-sap-share"><i class="fa fa-share-alt"></i></a></li>
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="admin/controller/catalog/{category,product,review,information}.php">
+		<operation error="log">
+			<search><![CDATA[$data['button_edit'] = $this->language->get('button_edit');]]></search>
+			<add position="after"><![CDATA[
+				$data['button_share'] = $this->language->get('button_share');
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="admin/view/template/catalog/category_list.tpl">
+		<operation error="log">
+			<search><![CDATA[<a href="<?php echo $category['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>]]></search>
+			<add position="replace"><![CDATA[
+				<a href="<?php echo $category['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+				<a href="javascript:void(0)" data-sap-item-type="category" data-sap-item-id="<?php echo $category['category_id']; ?>" data-toggle="tooltip" title="<?php echo $button_share; ?>" class="btn btn-default btn-sap-share"><i class="fa fa-share-alt"></i></a>
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="admin/view/template/catalog/product_list.tpl">
+		<operation error="log">
+			<search><![CDATA[<a href="<?php echo $product['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>]]></search>
+			<add position="replace"><![CDATA[
+				<a href="<?php echo $product['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+				<a href="javascript:void(0)" data-sap-item-type="product" data-sap-item-id="<?php echo $product['product_id']; ?>" data-toggle="tooltip" title="<?php echo $button_share; ?>" class="btn btn-default btn-sap-share"><i class="fa fa-share-alt"></i></a>
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="admin/view/template/catalog/review_list.tpl">
+		<operation error="log">
+			<search><![CDATA[<a href="<?php echo $review['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>]]></search>
+			<add position="replace"><![CDATA[
+				<a href="<?php echo $review['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+				<a href="javascript:void(0)" data-sap-item-type="review" data-sap-item-id="<?php echo $review['review_id']; ?>" data-toggle="tooltip" title="<?php echo $button_share; ?>" class="btn btn-default btn-sap-share"><i class="fa fa-share-alt"></i></a>
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="admin/view/template/catalog/information_list.tpl">
+		<operation error="log">
+			<search><![CDATA[<a href="<?php echo $information['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>]]></search>
+			<add position="replace"><![CDATA[
+				<a href="<?php echo $information['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+				<a href="javascript:void(0)" data-sap-item-type="information" data-sap-item-id="<?php echo $information['information_id']; ?>" data-toggle="tooltip" title="<?php echo $button_share; ?>" class="btn btn-default btn-sap-share"><i class="fa fa-share-alt"></i></a>
+			]]></add>
+		</operation>
+	</file>
+
+</modification>
